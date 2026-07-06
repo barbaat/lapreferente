@@ -65,7 +65,7 @@ export function StandingsTable({
                     </div>
                   </td>
                   <td className="py-2 pl-1">
-                    <Link href={`/equipos/${team.slug}`} className="flex items-center gap-2 hover:text-brand-turquoise">
+                    <Link href={`/equipos/${team.slug}`} className="flex min-w-0 items-center gap-2 hover:text-brand-turquoise">
                       <TeamBadge name={team.name} colors={team.colors} size="xs" />
                       <span className="truncate font-medium">{compact ? team.shortName : team.name}</span>
                     </Link>

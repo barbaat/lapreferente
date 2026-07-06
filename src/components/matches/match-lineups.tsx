@@ -1,15 +1,22 @@
 import Link from "next/link";
 import { getPlayerById, getTeamById, type Match } from "@/lib/mock";
 
+const POSITION_ORDER = ["Portero", "Defensa", "Centrocampista", "Delantero"];
+
 function LineupList({ teamId, playerIds, align }: { teamId: string; playerIds: string[]; align: "left" | "right" }) {
   const team = getTeamById(teamId)!;
+  const sortedPlayerIds = [...playerIds].sort((a, b) => {
+    const posA = getPlayerById(a)?.position;
+    const posB = getPlayerById(b)?.position;
+    return POSITION_ORDER.indexOf(posA ?? "") - POSITION_ORDER.indexOf(posB ?? "");
+  });
   return (
     <div>
       <p className={`mb-2 text-xs font-medium text-muted-foreground ${align === "right" ? "text-right" : ""}`}>
         {team.name} · {team.coach.name}
       </p>
       <ul className="space-y-1.5">
-        {playerIds.map((id) => {
+        {sortedPlayerIds.map((id) => {
           const player = getPlayerById(id);
           if (!player) return null;
           return (

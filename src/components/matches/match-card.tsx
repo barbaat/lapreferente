@@ -32,7 +32,7 @@ export function MatchCard({ match, showCompetition = false }: { match: Match; sh
       </div>
 
       <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
-        <div className="flex items-center gap-2 justify-end text-right">
+        <div className="flex min-w-0 items-center gap-2 justify-end text-right">
           <span className="truncate text-sm font-medium">{home.shortName}</span>
           <TeamBadge name={home.name} colors={home.colors} size="sm" />
         </div>
@@ -47,7 +47,7 @@ export function MatchCard({ match, showCompetition = false }: { match: Match; sh
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-2">
           <TeamBadge name={away.name} colors={away.colors} size="sm" />
           <span className="truncate text-sm font-medium">{away.shortName}</span>
         </div>
